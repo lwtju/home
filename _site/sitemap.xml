@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://10.143.186.162:4000/2016/11/10/Jenkins-error.html</loc>
+<loc>http://10.143.186.162:4000/home/2016/11/10/Jenkins-error.html</loc>
 <lastmod>2016-11-10T00:00:00+08:00</lastmod>
 </url>
 <url>
-<loc>http://10.143.186.162:4000/about.html</loc>
+<loc>http://10.143.186.162:4000/home/about.html</loc>
 </url>
 <url>
-<loc>http://10.143.186.162:4000/all.html</loc>
+<loc>http://10.143.186.162:4000/home/all.html</loc>
 </url>
 <url>
-<loc>http://10.143.186.162:4000/</loc>
+<loc>http://10.143.186.162:4000/home/</loc>
 </url>
 </urlset>
