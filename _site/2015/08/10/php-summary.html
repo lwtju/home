@@ -1,0 +1,192 @@
+<!DOCTYPE html><html lang="zh">
+  <head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>php问题汇总 - 三江的博客</title>
+<meta name="description" content="  用php执行exec要在结尾加上 2&gt;&amp;1   否则错误信息可能打不出来 redirect the error msg to standard output  php-fpm.conf内有控制系统环境变量的参数 clear_env ，此参数在 5.4.27之后默认开启，会导致php命令行执行脚本...">
+<link rel="canonical" href="http://10.143.186.162:4000/home/2015/08/10/php-summary.html"><link rel="alternate" type="application/rss+xml" title="三江的博客" href="http://10.143.186.162:4000/home/feed.xml">
+<!-- for Safari on iOS https://developer.apple.com/ios/human-interface-guidelines/icons-and-images/app-icon/ --><link rel="apple-touch-icon" sizes="180x180" href="/home/assets/images/logo/icon-180x180.png"><link rel="apple-touch-icon" sizes="167x167" href="/home/assets/images/logo/icon-167x167.png"><link rel="apple-touch-icon" sizes="152x152" href="/home/assets/images/logo/icon-152x152.png"><link rel="apple-touch-icon" sizes="120x120" href="/home/assets/images/logo/icon-120x120.png"><link rel="shortcut icon" href="/home/assets/images/logo/icon-120x120.png">
+<!-- for Chrome on Android https://developer.chrome.com/multidevice/android/installtohomescreen -->
+<meta name="mobile-web-app-capable" content="yes"><link rel="icon" sizes="192x192" href="/home/assets/images/logo/icon-192x192.png">
+<!-- for Edge on Windows 10 https://msdn.microsoft.com/en-us/library/dn255024(v=vs.85).aspx --><meta name="msapplication-TileImage" content="/home/assets/images/logo/icon-144x144.png"><meta name="msapplication-square310x310logo" content="/home/assets/images/logo/icon-310x310.png"><meta name="msapplication-wide310x150logo" content="/home/assets/images/logo/icon-310x150.png"><meta name="msapplication-square150x150logo" content="/home/assets/images/logo/icon-150x150.png"><meta name="msapplication-square70x70logo" content="/home/assets/images/logo/icon-70x70.png">
+<meta name="msapplication-TileColor" content="#eeeeee"><link rel="stylesheet" href="/home/assets/css/blog.css">
+    <style></style>
+    <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="m-page-stage js-page-stage"><div class="m-page-content"><header class="m-page-header main clearfix"><a class="site-title" title="三江的博客，记录三江工作生活中的点滴
+" href="/home/">三江的博客</a><div class="site-logo"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="24px" height="24px" viewBox="0 0 24 24">
+<style type="text/css">
+	.st0{fill:#666666;}
+</style>
+<path class="st0" d="M1.7,22.3c5.7-5.7,11.3-5.7,17,0c3.3-3.3,3.5-5.3,0.8-6c2.7,0.7,3.5-1.1,2.3-5.6s-3.3-5.2-6.3-2.1
+	c3-3,2.3-5.2-2.1-6.3S7,1.8,7.7,4.6C7,1.8,5,2.1,1.7,5.3C7.3,11,7.3,16.7,1.7,22.3"/>
+</svg></div>
+  <nav>
+    <ul class="inline-list"><li><a href="/home/">主页</a></li><li><a href="/home/all.html">归档</a></li><li><a href="/home/about.html">关于</a></li><li><a type="application/rss+xml" href="/home/feed.xml">RSS</a></li>
+    </ul>
+  </nav>
+</header>
+<div class="m-page-main"><div class="m-post">
+	<div class="main js-main">
+		<div class="col-1">
+			<article itemscope itemtype="http://schema.org/BlogPosting">
+				<meta itemprop="mainEntityOfPage" itemscope itemType="https://schema.org/WebPage"/>
+				<header class="article-header"><h1 itemprop="headline" itemprop="name headline">php问题汇总</h1><div class="m-article-data clearfix"><meta itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="刘三江"/></meta><ul class="inline-list tag-wrapper"><li>
+          <a class="pill-button" href="/home/all.html?tag=php">php</a>
+        </li></ul><div class="other-wrapper"><div class="date-wrapper"><time class="article-meta" datetime="2015-08-10T00:00:00+08:00"
+          itemprop="datePublished">2015年 08月10日
+        </time></div>
+  </div>
+</div>
+</header>
+				<div class="m-article-content js-article-content" itemprop="articleBody"><ol>
+  <li>用php执行exec要在结尾加上 2&gt;&amp;1   否则错误信息可能打不出来 redirect the error msg to standard output</li>
+  <li>php-fpm.conf内有控制系统环境变量的参数 clear_env ，此参数在 5.4.27之后默认开启，会导致php命令行执行脚本获取不到系统的环境变量</li>
+  <li></li>
+</ol>
+</div>
+				<footer><meta itemprop="dateModified" content="2015-08-10T00:00:00+08:00"><div class="article-license"><div class="m-license"><div class="clearfix"><p>本文遵守 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> 许可协议。</p><a class="license" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+      <img alt="Creative Commons License" src="/home/assets/images/license-cc4.png" />
+    </a><p>欢迎转载，转载需注明出处，且禁止用于商业目的。</p>
+  </div>
+</div></div>
+				</footer><section></section>
+					<section></section></article>
+		</div>
+		<div class="col-2">
+			<aside class="js-article-aside"><div class="m-toc js-toc"></div></aside>
+		</div>
+	</div>
+</div>
+
+<script src="//cdn.bootcss.com/toc/0.3.2/toc.min.js"></script>
+<script type="text/javascript">
+	window.throttle = function(func, wait) {
+	  var args, result, thisArg, timeoutId, lastCalled = 0;
+
+	  function trailingCall() {
+	    lastCalled = new Date;
+	    timeoutId = null;
+	    result = func.apply(thisArg, args);
+	  }
+	  return function() {
+	    var now = new Date,
+	      remaining = wait - (now - lastCalled);
+
+	    args = arguments;
+	    thisArg = this;
+
+	    if (remaining <= 0) {
+	      clearTimeout(timeoutId);
+	      timeoutId = null;
+	      lastCalled = now;
+	      result = func.apply(thisArg, args);
+	    } else if (!timeoutId) {
+	      timeoutId = setTimeout(trailingCall, remaining);
+	    }
+	    return result;
+	  };
+	}
+	$(function() {
+	  var $window = $(window);
+	  var $pageStage = $('.js-page-stage');
+	  var $pageMain = $('.js-main');
+	  var $pageFooter = $('.js-page-footer');
+	  var $articleContent = $('.js-article-content');
+	  var $articleAside = $('.js-article-aside');
+	  var $toc = $('.js-toc');
+	  var hasTitle = $articleContent.find('h1, h2, h3').length > 0;
+
+	  function asideSticky() {
+	    return $window.outerWidth() > 1150 && $pageStage.hasClass('has-toc');
+	  }
+
+	  function setTocClass() {
+	    if (hasTitle) {
+	      !$pageStage.hasClass('has-toc') && $pageStage.addClass('has-toc');
+	    }
+	  }
+
+	  setTocClass();
+
+	  function setAsideTOC() {
+	    var asideTop, asideLeft, scrollBottom, asideBottomTop, lastScrollTop;
+
+	    function init() {
+	      var asideOffset = $articleAside.offset();
+	      var footerOffset = $pageFooter.offset();
+	      var mainOffset = $pageMain.offset();
+	      asideTop = mainOffset.top;
+	      asideHeight = $toc.outerHeight() + parseInt($articleAside.css('padding-top'), 10) + parseInt($articleAside.css('padding-bottom'), 10);
+	      asideLeft = mainOffset.left + $pageMain.outerWidth() - $articleAside.outerWidth() - parseInt($pageMain.css('padding-right'), 10);
+	      scrollBottom = footerOffset.top - asideHeight;
+	      asideBottomTop = scrollBottom - mainOffset.top;
+	    }
+
+	    function setAside(force) {
+	      force !== true && (force = false);
+	      var scrollTop = $window.scrollTop();
+	      if (scrollTop >= asideTop && scrollTop <= scrollBottom) {
+	        (!force && lastScrollTop >= asideTop && lastScrollTop <= scrollBottom) ||
+	        $articleAside.addClass('fixed').css({
+	          left: asideLeft + 'px',
+	          top: 0
+	        });
+	      } else if (scrollTop < asideTop) {
+	        (!force && lastScrollTop < asideTop) ||
+	        $articleAside.removeClass('fixed').css({
+	          left: 0,
+	          top: 0
+	        });
+	      } else {
+	        (!force && lastScrollTop > scrollBottom) ||
+	        $articleAside.removeClass('fixed').css({
+	          left: 0,
+	          top: asideBottomTop + 'px'
+	        });
+	      }
+	      lastScrollTop = scrollTop;
+	    }
+	    asideSticky() && (init(), setAside());
+	    $window.on('scroll', function() {
+	      asideSticky() && setAside();
+	    });
+	    $window.on('resize', throttle(function() {
+	      setTocClass();
+	      asideSticky() && (init(), setAside(true));
+	    }, 100));
+	    setTimeout(init, 4000);
+	  }
+	  setTimeout(setAsideTOC, 1000);
+
+	  $toc.toc({
+	    'selectors': 'h1,h2,h3',
+	    'container': '.js-article-content',
+	  });
+	});
+</script></div>
+</div>
+</div><div class="m-page-footer js-page-footer">
+  <div class="main">
+    <aside><div class="follow-me"><ul class="inline-list" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘三江">
+    <link itemprop="url" href="http://10.143.186.162:4000/"></ul><p class="email">
+      <a title="给我发邮件。" href="mailto:liuwangv5@163.com" target="_self">liuwangv5@163.com</a>
+    </p></div>
+</aside>
+    <footer class="site-info">
+      <p>© 三江的博客 2018</p>
+      <p>Powered by <a title="Jekyll is a simple, blog-aware, static site generator." href="http://jekyllrb.com/">Jekyll</a> & <a
+        title="TeXt is a succinct theme for blogging." href="https://github.com/kitian616/jekyll-TeXt-theme">TeXt Theme</a>.</p>
+    </footer>
+  </div>
+</div><script>
+      $(function() {
+        // display coding language
+        $(".highlight").each(function() {
+          $(this).attr("data-lang", $(this).find("code").attr("data-lang"));
+        });
+      });
+    </script></body>
+</html>

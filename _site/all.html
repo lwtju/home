@@ -33,20 +33,59 @@
   <ul class="inline-list">
     <li>
       <button type="button" class="js-article-tag js-tag-show-all all pill-button" onclick="tagSelect('')">Show All
-        <div class="tag-count">1</div>
+        <div class="tag-count">4</div>
       </button>
     </li><li><button type="button" class="js-article-tag tag-1 pill-button"
         data-tag="Jenkins" onclick="tagSelect('Jenkins')">
           <span>Jenkins</span><div class="tag-count">1</div>
         </button>
+      </li><li><button type="button" class="js-article-tag tag-1 pill-button"
+        data-tag="memory" onclick="tagSelect('memory')">
+          <span>memory</span><div class="tag-count">1</div>
+        </button>
+      </li><li><button type="button" class="js-article-tag tag-1 pill-button"
+        data-tag="nginx" onclick="tagSelect('nginx')">
+          <span>nginx</span><div class="tag-count">1</div>
+        </button>
+      </li><li><button type="button" class="js-article-tag tag-2 pill-button"
+        data-tag="php" onclick="tagSelect('php')">
+          <span>php</span><div class="tag-count">2</div>
+        </button>
+      </li><li><button type="button" class="js-article-tag tag-1 pill-button"
+        data-tag="queue" onclick="tagSelect('queue')">
+          <span>queue</span><div class="tag-count">1</div>
+        </button>
+      </li><li><button type="button" class="js-article-tag tag-1 pill-button"
+        data-tag="redis" onclick="tagSelect('redis')">
+          <span>redis</span><div class="tag-count">1</div>
+        </button>
+      </li><li><button type="button" class="js-article-tag tag-1 pill-button"
+        data-tag="valgrind" onclick="tagSelect('valgrind')">
+          <span>valgrind</span><div class="tag-count">1</div>
+        </button>
       </li></ul>
 </div>
 <!--group by year: http://stackoverflow.com/questions/19086284/jekyll-liquid-templating-how-to-group-blog-posts-by-year-->
-    <section class="js-year-wrapper"><section id="2016">
+    <section class="js-year-wrapper"><section id="2018">
+          <h2 class="year-title" id="year-2018">2018</h2>
+          <ul class="year-list"><li class="js-post-block" data-tag="valgrind,nginx,memory">
+          <span class="post-date">01月17日</span>
+          <a class="post-link" href="/home/2018/01/17/valgrind-nginx-mem.html">用valgrind查找nginx内C代码写越界问题</a>
+        </li></ul></section><section id="2017">
+          <h2 class="year-title" id="year-2017">2017</h2>
+          <ul class="year-list"><li class="js-post-block" data-tag="php,redis,queue">
+          <span class="post-date">10月16日</span>
+          <a class="post-link" href="/home/2017/10/16/Jobn-queue.html">用redis实现的一个简单任务处理代码</a>
+        </li></ul></section><section id="2016">
           <h2 class="year-title" id="year-2016">2016</h2>
           <ul class="year-list"><li class="js-post-block" data-tag="Jenkins">
           <span class="post-date">11月10日</span>
           <a class="post-link" href="/home/2016/11/10/Jenkins-error.html">记一次Jenkins部署错误解决过程</a>
+        </li></ul></section><section id="2015">
+          <h2 class="year-title" id="year-2015">2015</h2>
+          <ul class="year-list"><li class="js-post-block" data-tag="php">
+          <span class="post-date">08月10日</span>
+          <a class="post-link" href="/home/2015/08/10/php-summary.html">php问题汇总</a>
         </li></ul></section></section>
   </div>
 </div><script type="text/javascript">

@@ -1,5 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh"><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://10.143.186.162:4000/home/feed.xml" rel="self" type="application/atom+xml" /><link href="http://10.143.186.162:4000/home/" rel="alternate" type="text/html" hreflang="zh" /><updated>2018-03-20T16:15:36+08:00</updated><id>http://10.143.186.162:4000/home/</id><title type="html">三江的博客</title><subtitle>三江的博客，记录三江工作生活中的点滴
-</subtitle><author><name>刘三江</name><email>liuwangv5@163.com</email></author><entry><title type="html">记一次Jenkins部署错误解决过程</title><link href="http://10.143.186.162:4000/home/2016/11/10/Jenkins-error.html" rel="alternate" type="text/html" title="记一次Jenkins部署错误解决过程" /><published>2016-11-10T00:00:00+08:00</published><updated>2016-11-10T00:00:00+08:00</updated><id>http://10.143.186.162:4000/home/2016/11/10/Jenkins-error</id><content type="html" xml:base="http://10.143.186.162:4000/home/2016/11/10/Jenkins-error.html">&lt;h2 id=&quot;问题表现&quot;&gt;问题表现&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh"><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://10.143.186.162:4000/home/feed.xml" rel="self" type="application/atom+xml" /><link href="http://10.143.186.162:4000/home/" rel="alternate" type="text/html" hreflang="zh" /><updated>2018-03-23T21:16:41+08:00</updated><id>http://10.143.186.162:4000/home/</id><title type="html">三江的博客</title><subtitle>三江的博客，记录三江工作生活中的点滴
+</subtitle><author><name>刘三江</name><email>liuwangv5@163.com</email></author><entry><title type="html">用valgrind查找nginx内C代码写越界问题</title><link href="http://10.143.186.162:4000/home/2018/01/17/valgrind-nginx-mem.html" rel="alternate" type="text/html" title="用valgrind查找nginx内C代码写越界问题" /><published>2018-01-17T00:00:00+08:00</published><updated>2018-01-17T00:00:00+08:00</updated><id>http://10.143.186.162:4000/home/2018/01/17/valgrind-nginx-mem</id><content type="html" xml:base="http://10.143.186.162:4000/home/2018/01/17/valgrind-nginx-mem.html">&lt;h2 id=&quot;问题表现&quot;&gt;问题表现&lt;/h2&gt;
+
+&lt;p&gt;公司内的一个打点服务用的是nginx+lua实现的，其中解密代码用C实现。测试发现nginx会自动重启worker进程，并在重启一定次数后会直接不再重启。也会有一些进程不退出，但无法接受新的链接。&lt;/p&gt;
+
+&lt;h2 id=&quot;解决过程&quot;&gt;解决过程&lt;/h2&gt;
+
+&lt;p&gt;1、观察error log能发现worker进程会退出,调试模式定位到了一个解密so的问题&lt;/p&gt;
+
+&lt;p&gt;2、valgrind安装就不再赘述了，安装好之后执行命令 &lt;br /&gt;
+valgrind –tool=memcheck –leak-check=full –track-origins=yes –show-reachable=yes /usr/local/nginx/sbin/nginx -c /home/q/system/nginx.conf&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/valgrind_nginx_mem_1.jpg&quot; alt=&quot;valgrind_nginx_mem_1&quot; title=&quot;valgrind_nginx_mem_1.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;3、检查源代码也会有相应的发现&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/valgrind_nginx_mem_2.png&quot; alt=&quot;valgrind_nginx_mem_2&quot; title=&quot;valgrind_nginx_mem_2.png&quot; /&gt;&lt;/p&gt;</content><author><name>刘三江</name><email>liuwangv5@163.com</email></author><category term="valgrind" /><category term="nginx" /><category term="memory" /><summary type="html">问题表现 公司内的一个打点服务用的是nginx+lua实现的，其中解密代码用C实现。测试发现nginx会自动重启worker进程，并在重启一定次数后会直接不再重启。也会有一些进程不退出，但无法接受新的链接。 解决过程 1、观察error log能发现worker进程会退出,调试模式定位到了一个解密so的问题 2、valgrind安装就不再赘述了，安装好之后执行命令 valgrind –tool=memcheck –leak-check=full –track-origins=yes –show-reachable=yes /usr/local/nginx/sbin/nginx -c /home/q/system/nginx.conf 3、检查源代码也会有相应的发现</summary></entry><entry><title type="html">用redis实现的一个简单任务处理代码</title><link href="http://10.143.186.162:4000/home/2017/10/16/Jobn-queue.html" rel="alternate" type="text/html" title="用redis实现的一个简单任务处理代码" /><published>2017-10-16T00:00:00+08:00</published><updated>2017-10-16T00:00:00+08:00</updated><id>http://10.143.186.162:4000/home/2017/10/16/Jobn-queue</id><content type="html" xml:base="http://10.143.186.162:4000/home/2017/10/16/Jobn-queue.html">&lt;h2 id=&quot;场景需求&quot;&gt;场景需求&lt;/h2&gt;
+
+&lt;p&gt;业务上需要执行定时任务，起初是用redis的list实现的，但pop的问题是任务执行出错、进程crash、机器故障突发时错误处理不及时，无法任务回溯&lt;/p&gt;
+
+&lt;h2 id=&quot;解决过程&quot;&gt;解决过程&lt;/h2&gt;
+
+&lt;p&gt;直接上代码吧&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;use \Yaf\Registry;
+
+class JobService extends BaseService
+{
+	private $ttl;
+	private $listName;
+	private $dbConfig;
+
+	public function __construct($dbConfig = '', $listName = '', $ttl = 300)
+	{
+		if(empty($listName)) {
+			$this-&amp;gt;listName = Registry::get('config')-&amp;gt;queName;
+		}else{
+			$this-&amp;gt;listName = $listName;
+		}
+
+		$this-&amp;gt;ttl = $ttl;
+		$this-&amp;gt;dbConfig = $dbConfig ? : 'defaultName';
+	}
+
+	public function addJob($jobName, $jobTime)
+	{
+		//getRedisIns由BaseService内实现
+		return $this-&amp;gt;getRedisIns($this-&amp;gt;dbConfig)-&amp;gt;zadd($this-&amp;gt;listName, $jobTime, $jobName);
+	}
+
+	/*获取最新一条任务*/
+	public function getJob()
+	{
+		$queName = $this-&amp;gt;listName;
+		$arrRet = $this-&amp;gt;getRedisIns($this-&amp;gt;dbConfig)-&amp;gt;zrange($queName, 0, 0, &quot;withscores&quot;);
+		if (empty($arrRet)) {
+			return false;
+		}
+
+		$arrTmp = array_keys($arrRet);
+		$key = $arrTmp[0];
+		//判断此任务执行时间已到
+		if ($arrRet[$key] &amp;gt; time()) {
+			return false;
+		}
+		//保证任务只被一个处理程序读取
+		$flagKey = $key . ':flag:' . $this-&amp;gt;listName;
+		$flag = $this-&amp;gt;getRedisIns($this-&amp;gt;dbConfig)-&amp;gt;incr($flagKey);
+		if ((int)$flag != 1) {
+			return false;
+		}
+		$this-&amp;gt;getRedisIns($this-&amp;gt;dbConfig)-&amp;gt;expire($flagKey, (int)($this-&amp;gt;ttl) / 2);
+
+		//读取之后为此任务延迟ttl时间
+		if (false !== $this-&amp;gt;getRedisIns($this-&amp;gt;dbConfig)-&amp;gt;zadd($queName, time() + $this-&amp;gt;ttl, $key)) {
+			return $key;
+		}
+
+		return false;
+	}
+
+	public function delJob($jobName)
+	{
+		return $this-&amp;gt;getRedisIns($this-&amp;gt;dbConfig)-&amp;gt;zrem($this-&amp;gt;listName, $jobName);
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>刘三江</name><email>liuwangv5@163.com</email></author><category term="php" /><category term="redis" /><category term="queue" /><summary type="html">场景需求 业务上需要执行定时任务，起初是用redis的list实现的，但pop的问题是任务执行出错、进程crash、机器故障突发时错误处理不及时，无法任务回溯 解决过程 直接上代码吧 use \Yaf\Registry; class JobService extends BaseService { private $ttl; private $listName; private $dbConfig; public function __construct($dbConfig = '', $listName = '', $ttl = 300) { if(empty($listName)) { $this-&amp;gt;listName = Registry::get('config')-&amp;gt;queName; }else{ $this-&amp;gt;listName = $listName; } $this-&amp;gt;ttl = $ttl; $this-&amp;gt;dbConfig = $dbConfig ? : 'defaultName'; } public function addJob($jobName, $jobTime) { //getRedisIns由BaseService内实现 return $this-&amp;gt;getRedisIns($this-&amp;gt;dbConfig)-&amp;gt;zadd($this-&amp;gt;listName, $jobTime, $jobName); } /*获取最新一条任务*/ public function getJob() { $queName = $this-&amp;gt;listName; $arrRet = $this-&amp;gt;getRedisIns($this-&amp;gt;dbConfig)-&amp;gt;zrange($queName, 0, 0, &quot;withscores&quot;); if (empty($arrRet)) { return false; } $arrTmp = array_keys($arrRet); $key = $arrTmp[0]; //判断此任务执行时间已到 if ($arrRet[$key] &amp;gt; time()) { return false; } //保证任务只被一个处理程序读取 $flagKey = $key . ':flag:' . $this-&amp;gt;listName; $flag = $this-&amp;gt;getRedisIns($this-&amp;gt;dbConfig)-&amp;gt;incr($flagKey); if ((int)$flag != 1) { return false; } $this-&amp;gt;getRedisIns($this-&amp;gt;dbConfig)-&amp;gt;expire($flagKey, (int)($this-&amp;gt;ttl) / 2); //读取之后为此任务延迟ttl时间 if (false !== $this-&amp;gt;getRedisIns($this-&amp;gt;dbConfig)-&amp;gt;zadd($queName, time() + $this-&amp;gt;ttl, $key)) { return $key; } return false; } public function delJob($jobName) { return $this-&amp;gt;getRedisIns($this-&amp;gt;dbConfig)-&amp;gt;zrem($this-&amp;gt;listName, $jobName); } }</summary></entry><entry><title type="html">记一次Jenkins部署错误解决过程</title><link href="http://10.143.186.162:4000/home/2016/11/10/Jenkins-error.html" rel="alternate" type="text/html" title="记一次Jenkins部署错误解决过程" /><published>2016-11-10T00:00:00+08:00</published><updated>2016-11-10T00:00:00+08:00</updated><id>http://10.143.186.162:4000/home/2016/11/10/Jenkins-error</id><content type="html" xml:base="http://10.143.186.162:4000/home/2016/11/10/Jenkins-error.html">&lt;h2 id=&quot;问题表现&quot;&gt;问题表现&lt;/h2&gt;
 
 &lt;p&gt;提示错误：RPC failed: result=18, HTTP code = 200&lt;/p&gt;
 
@@ -32,4 +117,8 @@
 
 &lt;h2 id=&quot;总结&quot;&gt;总结&lt;/h2&gt;
 
-&lt;p&gt;一开始解决问题很容易钻入某个错误细节，把数据走向经过的结构搞清，从宏观上查看中间log，更容易顺藤摸瓜&lt;/p&gt;</content><author><name>刘三江</name><email>liuwangv5@163.com</email></author><category term="Jenkins" /><summary type="html">问题表现 提示错误：RPC failed: result=18, HTTP code = 200 此外还有一个表象，有的job能工作，有的job不能工作 解决过程 1、最初以为是授信问题，尝试将https用户名密码登录方式改为ssh方式，无效，除了上面截图，未能在jenkins上找到其他日志 2、然后查看git服务，开始被unicorn.stderr.log 的一个日志误导了，以为是内存不够 然而这个错误并不是致命错误，然后又返回查看jenkins 3、在jenkins的屏幕输出中发现了这条 fatal: The remote end hung up unexpectedly 这是远程断开了，应该先从宏观上查问题，jenkins和gitlab之间还有一层nginx，发现nginx里有个log upstream closed, 说明git服务多半超时了 3、再次查看unicorn.stderr.log 发现了这条 基本是配置问题了，打开unicorn.rb发现了这个时间设置 timeout 60 改成120，还是有错，改成240，成功执行 总结 一开始解决问题很容易钻入某个错误细节，把数据走向经过的结构搞清，从宏观上查看中间log，更容易顺藤摸瓜</summary></entry></feed>
+&lt;p&gt;一开始解决问题很容易钻入某个错误细节，把数据走向经过的结构搞清，从宏观上查看中间log，更容易顺藤摸瓜&lt;/p&gt;</content><author><name>刘三江</name><email>liuwangv5@163.com</email></author><category term="Jenkins" /><summary type="html">问题表现 提示错误：RPC failed: result=18, HTTP code = 200 此外还有一个表象，有的job能工作，有的job不能工作 解决过程 1、最初以为是授信问题，尝试将https用户名密码登录方式改为ssh方式，无效，除了上面截图，未能在jenkins上找到其他日志 2、然后查看git服务，开始被unicorn.stderr.log 的一个日志误导了，以为是内存不够 然而这个错误并不是致命错误，然后又返回查看jenkins 3、在jenkins的屏幕输出中发现了这条 fatal: The remote end hung up unexpectedly 这是远程断开了，应该先从宏观上查问题，jenkins和gitlab之间还有一层nginx，发现nginx里有个log upstream closed, 说明git服务多半超时了 3、再次查看unicorn.stderr.log 发现了这条 基本是配置问题了，打开unicorn.rb发现了这个时间设置 timeout 60 改成120，还是有错，改成240，成功执行 总结 一开始解决问题很容易钻入某个错误细节，把数据走向经过的结构搞清，从宏观上查看中间log，更容易顺藤摸瓜</summary></entry><entry><title type="html">php问题汇总</title><link href="http://10.143.186.162:4000/home/2015/08/10/php-summary.html" rel="alternate" type="text/html" title="php问题汇总" /><published>2015-08-10T00:00:00+08:00</published><updated>2015-08-10T00:00:00+08:00</updated><id>http://10.143.186.162:4000/home/2015/08/10/php-summary</id><content type="html" xml:base="http://10.143.186.162:4000/home/2015/08/10/php-summary.html">&lt;ol&gt;
+  &lt;li&gt;用php执行exec要在结尾加上 2&amp;gt;&amp;amp;1   否则错误信息可能打不出来 redirect the error msg to standard output&lt;/li&gt;
+  &lt;li&gt;php-fpm.conf内有控制系统环境变量的参数 clear_env ，此参数在 5.4.27之后默认开启，会导致php命令行执行脚本获取不到系统的环境变量&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>刘三江</name><email>liuwangv5@163.com</email></author><category term="php" /><summary type="html">用php执行exec要在结尾加上 2&amp;gt;&amp;amp;1 否则错误信息可能打不出来 redirect the error msg to standard output php-fpm.conf内有控制系统环境变量的参数 clear_env ，此参数在 5.4.27之后默认开启，会导致php命令行执行脚本获取不到系统的环境变量</summary></entry></feed>

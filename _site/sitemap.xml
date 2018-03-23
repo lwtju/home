@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://10.143.186.162:4000/home/2015/08/10/php-summary.html</loc>
+<lastmod>2015-08-10T00:00:00+08:00</lastmod>
+</url>
+<url>
 <loc>http://10.143.186.162:4000/home/2016/11/10/Jenkins-error.html</loc>
 <lastmod>2016-11-10T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://10.143.186.162:4000/home/2017/10/16/Jobn-queue.html</loc>
+<lastmod>2017-10-16T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://10.143.186.162:4000/home/2018/01/17/valgrind-nginx-mem.html</loc>
+<lastmod>2018-01-17T00:00:00+08:00</lastmod>
 </url>
 <url>
 <loc>http://10.143.186.162:4000/home/about.html</loc>

@@ -30,7 +30,62 @@
 </header>
 <div class="m-page-main"><div class="m-home">
   <div class="main">
-    <div class="m-post-list"><article><h1><a href="/home/2016/11/10/Jenkins-error.html">记一次Jenkins部署错误解决过程</a></h1>
+    <div class="m-post-list"><article><h1><a href="/home/2018/01/17/valgrind-nginx-mem.html">用valgrind查找nginx内C代码写越界问题</a></h1>
+          <div class="m-article-content">问题表现
+
+公司内的一个打点服务用的是nginx+lua实现的，其中解密代码用C实现。测试发现nginx会自动重启worker进程，并在重启一定次数后会直接不再重启。也会有一些进程不退出，但无法接受新的链接。
+
+解决过程
+
+1、观察error log能发现worker进程会退出,调试模式定位到了一个解密so的问题
+
+2、valgrind安装就不再赘述了，安装好之后执行命令 
+valgrind –tool=memcheck –leak-check=full –track-origins=yes –show-reachable=yes /usr/local/nginx/sbin/nginx -c /home/q/system/nginx.conf
+
+
+
+3、检查源代码也会有相应的发现
+
+
+</div><a href="/home/2018/01/17/valgrind-nginx-mem.html">点我阅读更多...</a><div class="m-article-data clearfix"><meta itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="刘三江"/></meta><ul class="inline-list tag-wrapper"><li>
+          <a class="pill-button" href="/home/all.html?tag=valgrind">valgrind</a>
+        </li><li>
+          <a class="pill-button" href="/home/all.html?tag=nginx">nginx</a>
+        </li><li>
+          <a class="pill-button" href="/home/all.html?tag=memory">memory</a>
+        </li></ul><div class="other-wrapper"><div class="date-wrapper"><span class="article-meta">2018年 01月17日</span></div>
+  </div>
+</div>
+</article><article><h1><a href="/home/2017/10/16/Jobn-queue.html">用redis实现的一个简单任务处理代码</a></h1>
+          <div class="m-article-content">场景需求
+
+业务上需要执行定时任务，起初是用redis的list实现的，但pop的问题是任务执行出错、进程crash、机器故障突发时错误处理不及时，无法任务回溯
+
+解决过程
+
+直接上代码吧
+
+use \Yaf\Registry;
+
+class JobService extends BaseService
+{
+	private $ttl;
+	private $listName;
+	private $dbConfig;
+
+	public function __construct($dbConfig = '', $listName = '', $ttl = 300)
+	{
+		if(empty($listName)) {
+			$this-&gt;listName = Registry::g...</div><a href="/home/2017/10/16/Jobn-queue.html">点我阅读更多...</a><div class="m-article-data clearfix"><meta itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="刘三江"/></meta><ul class="inline-list tag-wrapper"><li>
+          <a class="pill-button" href="/home/all.html?tag=php">php</a>
+        </li><li>
+          <a class="pill-button" href="/home/all.html?tag=redis">redis</a>
+        </li><li>
+          <a class="pill-button" href="/home/all.html?tag=queue">queue</a>
+        </li></ul><div class="other-wrapper"><div class="date-wrapper"><span class="article-meta">2017年 10月16日</span></div>
+  </div>
+</div>
+</article><article><h1><a href="/home/2016/11/10/Jenkins-error.html">记一次Jenkins部署错误解决过程</a></h1>
           <div class="m-article-content">问题表现
 
 提示错误：RPC failed: result=18, HTTP code = 200
@@ -52,6 +107,17 @@
 3、在jenkins的屏幕输出中发现了这条 fatal: The remote end hung up unexpectedly 这是远程断开了，应该先从宏观上查问题，jenkins和gitlab之间还有一层nginx...</div><a href="/home/2016/11/10/Jenkins-error.html">点我阅读更多...</a><div class="m-article-data clearfix"><meta itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="刘三江"/></meta><ul class="inline-list tag-wrapper"><li>
           <a class="pill-button" href="/home/all.html?tag=Jenkins">Jenkins</a>
         </li></ul><div class="other-wrapper"><div class="date-wrapper"><span class="article-meta">2016年 11月10日</span></div>
+  </div>
+</div>
+</article><article><h1><a href="/home/2015/08/10/php-summary.html">php问题汇总</a></h1>
+          <div class="m-article-content">
+  用php执行exec要在结尾加上 2&gt;&amp;1   否则错误信息可能打不出来 redirect the error msg to standard output
+  php-fpm.conf内有控制系统环境变量的参数 clear_env ，此参数在 5.4.27之后默认开启，会导致php命令行执行脚本获取不到系统的环境变量
+  
+
+</div><a href="/home/2015/08/10/php-summary.html">点我阅读更多...</a><div class="m-article-data clearfix"><meta itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="刘三江"/></meta><ul class="inline-list tag-wrapper"><li>
+          <a class="pill-button" href="/home/all.html?tag=php">php</a>
+        </li></ul><div class="other-wrapper"><div class="date-wrapper"><span class="article-meta">2015年 08月10日</span></div>
   </div>
 </div>
 </article></div></div>
