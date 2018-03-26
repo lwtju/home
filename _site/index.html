@@ -53,7 +53,10 @@ valgrind –tool=memcheck –leak-check=full –track-origins=yes –show-reacha
           <a class="pill-button" href="/home/all.html?tag=nginx">nginx</a>
         </li><li>
           <a class="pill-button" href="/home/all.html?tag=memory">memory</a>
-        </li></ul><div class="other-wrapper"><div class="date-wrapper"><span class="article-meta">2018年 01月17日</span></div>
+        </li></ul><div class="other-wrapper"><div class="view-wrapper">
+        <span class="article-view" id="post-key-20180117">0
+        </span> views
+      </div><div class="date-wrapper"><span class="article-meta">2018年 01月17日</span></div>
   </div>
 </div>
 </article><article><h1><a href="/home/2017/10/16/Jobn-queue.html">用redis实现的一个简单任务处理代码</a></h1>
@@ -82,7 +85,10 @@ class JobService extends BaseService
           <a class="pill-button" href="/home/all.html?tag=redis">redis</a>
         </li><li>
           <a class="pill-button" href="/home/all.html?tag=queue">queue</a>
-        </li></ul><div class="other-wrapper"><div class="date-wrapper"><span class="article-meta">2017年 10月16日</span></div>
+        </li></ul><div class="other-wrapper"><div class="view-wrapper">
+        <span class="article-view" id="post-key-20171016">0
+        </span> views
+      </div><div class="date-wrapper"><span class="article-meta">2017年 10月16日</span></div>
   </div>
 </div>
 </article><article><h1><a href="/home/2016/11/10/Jenkins-error.html">记一次Jenkins部署错误解决过程</a></h1>
@@ -106,7 +112,10 @@ class JobService extends BaseService
 
 3、在jenkins的屏幕输出中发现了这条 fatal: The remote end hung up unexpectedly 这是远程断开了，应该先从宏观上查问题，jenkins和gitlab之间还有一层nginx...</div><a href="/home/2016/11/10/Jenkins-error.html">点我阅读更多...</a><div class="m-article-data clearfix"><meta itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="刘三江"/></meta><ul class="inline-list tag-wrapper"><li>
           <a class="pill-button" href="/home/all.html?tag=Jenkins">Jenkins</a>
-        </li></ul><div class="other-wrapper"><div class="date-wrapper"><span class="article-meta">2016年 11月10日</span></div>
+        </li></ul><div class="other-wrapper"><div class="view-wrapper">
+        <span class="article-view" id="post-key-20161110">0
+        </span> views
+      </div><div class="date-wrapper"><span class="article-meta">2016年 11月10日</span></div>
   </div>
 </div>
 </article><article><h1><a href="/home/2015/08/10/php-summary.html">php问题汇总</a></h1>
@@ -117,11 +126,36 @@ class JobService extends BaseService
 
 </div><a href="/home/2015/08/10/php-summary.html">点我阅读更多...</a><div class="m-article-data clearfix"><meta itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="刘三江"/></meta><ul class="inline-list tag-wrapper"><li>
           <a class="pill-button" href="/home/all.html?tag=php">php</a>
-        </li></ul><div class="other-wrapper"><div class="date-wrapper"><span class="article-meta">2015年 08月10日</span></div>
+        </li></ul><div class="other-wrapper"><div class="view-wrapper">
+        <span class="article-view" id="post-key-20150810">0
+        </span> views
+      </div><div class="date-wrapper"><span class="article-meta">2015年 08月10日</span></div>
   </div>
 </div>
 </article></div></div>
-</div></div>
+</div><script src="//cdn1.lncld.net/static/js/3.4.1/av-min.js"></script>
+  <script>
+    $(function() {
+      AV.init({
+        appId: 'n8v3q8stDN2WSkpsmhy3QoRe-gzGzoHsz',
+        appKey: 'H6bGuqKBbdwiu7s67UQQ87GH'
+      });
+      $(".article-view").each(function() {
+        var curId = this.id;
+        var query = new AV.Query('lwtju_home');
+        query.equalTo('key', curId.substr(9));
+        query.first().then(function(result) {
+          if (result) {
+            $('#' + curId).text(result.attributes.views);
+          }
+        }, function(error) {
+          if (error) {
+            throw error;
+          }
+        });
+      });
+    });
+  </script></div>
 </div>
 </div><div class="m-page-footer js-page-footer">
   <div class="main">

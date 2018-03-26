@@ -38,7 +38,10 @@
           <a class="pill-button" href="/home/all.html?tag=nginx">nginx</a>
         </li><li>
           <a class="pill-button" href="/home/all.html?tag=memory">memory</a>
-        </li></ul><div class="other-wrapper"><div class="date-wrapper"><time class="article-meta" datetime="2018-01-17T00:00:00+08:00"
+        </li></ul><div class="other-wrapper"><div class="view-wrapper">
+        <span class="article-view" id="post-key-20180117">0
+        </span> views
+      </div><div class="date-wrapper"><time class="article-meta" datetime="2018-01-17T00:00:00+08:00"
           itemprop="datePublished">2018年 01月17日
         </time></div>
   </div>
@@ -180,7 +183,55 @@ valgrind –tool=memcheck –leak-check=full –track-origins=yes –show-reacha
 	    'container': '.js-article-content',
 	  });
 	});
-</script></div>
+</script><script src="//cdn1.lncld.net/static/js/3.4.1/av-min.js"></script>
+  <script type="text/javascript">
+		$(function() {
+			// 初始化
+			AV.init({
+				appId: 'n8v3q8stDN2WSkpsmhy3QoRe-gzGzoHsz',
+				appKey: 'H6bGuqKBbdwiu7s67UQQ87GH'
+			});
+			// 查询
+			var query = new AV.Query('lwtju_home');
+			query.equalTo('key', '20180117');
+			query.first().then(function(result) {
+				if (result) {
+					addOne(result)
+				} else {
+					//新建
+					var Blog = AV.Object.extend('lwtju_home');
+					var blog = new Blog();
+					blog.set('title', '用valgrind查找nginx内C代码写越界问题');
+					blog.set('key', '20180117');
+					blog.set('views', 0);
+					blog.save().then(function(page) {
+						addOne(page)
+					}, function(error) {
+						if (error) {
+							throw error;
+						}
+					});
+				}
+
+				function addOne(page) {
+					page.increment('views', 1);
+					page.save(null, {
+						fetchWhenSave: true
+					}).then(function(page) {
+						$("#post-key-20180117").text(page.attributes.views);
+					}, function(error) {
+						if (error) {
+							throw error;
+						}
+					});
+				}
+			}, function(error) {
+				if (error) {
+					throw error;
+				}
+			});
+		});
+	</script></div>
 </div>
 </div><div class="m-page-footer js-page-footer">
   <div class="main">
