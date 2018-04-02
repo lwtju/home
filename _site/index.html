@@ -142,7 +142,7 @@ class JobService extends BaseService
       });
       $(".article-view").each(function() {
         var curId = this.id;
-        var query = new AV.Query('lwtju_home');
+        var query = new AV.Query('a_count');
         query.equalTo('key', curId.substr(9));
         query.first().then(function(result) {
           if (result) {

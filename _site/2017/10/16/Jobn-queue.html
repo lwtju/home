@@ -248,14 +248,14 @@ class JobService extends BaseService
 				appKey: 'H6bGuqKBbdwiu7s67UQQ87GH'
 			});
 			// 查询
-			var query = new AV.Query('lwtju_home');
+			var query = new AV.Query('a_count');
 			query.equalTo('key', '20171016');
 			query.first().then(function(result) {
 				if (result) {
 					addOne(result)
 				} else {
 					//新建
-					var Blog = AV.Object.extend('lwtju_home');
+					var Blog = AV.Object.extend('a_count');
 					var blog = new Blog();
 					blog.set('title', '用redis实现的一个简单任务处理代码');
 					blog.set('key', '20171016');
